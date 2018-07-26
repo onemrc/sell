@@ -22,3 +22,11 @@ spring:
 #if 返回的值是null 就不返回
   jackson:
     default-property-inclusion: non_null
+
+#    freemarker config
+  freemarker:
+    cache: false
+    check-template-location: true
+    content-type: text/html
+    charset: UTF-8
+    template-loader-path: classpath:/templates/

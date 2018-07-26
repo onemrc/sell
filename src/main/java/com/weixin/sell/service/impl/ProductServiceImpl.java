@@ -50,8 +50,11 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void decreaseStock(List<CartDTO> cartDTOList) {
         for (CartDTO cartDTO:cartDTOList){
-            ProductInfo productInfo=productInfoDAO.findById(cartDTO.getProductId()).get();
-            if (productInfoDAO == null){
+            Optional<ProductInfo> temp=productInfoDAO.findById(cartDTO.getProductId());
+            ProductInfo productInfo;
+            if (temp.isPresent()){
+                productInfo=productInfoDAO.findById(cartDTO.getProductId()).get();
+            }else {
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
 
@@ -65,5 +68,43 @@ public class ProductServiceImpl implements ProductService {
             productInfoDAO.save(productInfo);
 
         }
+    }
+
+    @Override
+    public ProductInfo onSale(String productId) {
+        Optional<ProductInfo> temp=productInfoDAO.findById(productId);
+        ProductInfo productInfo;
+        if (temp.isPresent()){
+            productInfo=productInfoDAO.findById(productId).get();
+        }else {
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if (productInfo.getProductStatus() == ProductStatusEnum.UP.getCode()){
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+
+        //更新
+        productInfo.setProductStatus(ProductStatusEnum.UP.getCode());
+
+        return productInfoDAO.save(productInfo);
+    }
+
+    @Override
+    public ProductInfo ofSale(String productId) {
+        Optional<ProductInfo> temp=productInfoDAO.findById(productId);
+        ProductInfo productInfo;
+        if (temp.isPresent()){
+            productInfo=productInfoDAO.findById(productId).get();
+        }else {
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if (productInfo.getProductStatus() == ProductStatusEnum.DOWN.getCode()){
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+
+        //更新
+        productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
+
+        return productInfoDAO.save(productInfo);
     }
 }
