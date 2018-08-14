@@ -24,9 +24,9 @@ public enum ResultEnum {
     ;
 
 
-    private Integer code;
+    private Integer code;//状态码
 
-    private String message;
+    private String message;//提示信息
 
     ResultEnum(Integer code, String message) {
         this.code = code;

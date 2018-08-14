@@ -14,30 +14,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/buyer/order")
 @Slf4j
 public class BuyerOrderController {
-    @Autowired
-    private OrderService orderService;
+//    不推荐这种注射方式
+//    @Autowired
+//    private OrderService orderService;
+//
+//    @Autowired
+//    private BuyerService buyerService;
+    private final OrderService orderService;
+
+    private final BuyerService buyerService;
 
     @Autowired
-    private BuyerService buyerService;
+    public BuyerOrderController(OrderService orderService, BuyerService buyerService) {
+        this.orderService = orderService;
+        this.buyerService = buyerService;
+    }
 
 
     //创建订单
     @PostMapping(value = "/create")
-    public ResultVO<Map<String,String>> create(@Valid OrderForm orderForm, BindingResult bindingResult){
+    public ResultVO create(@Valid OrderForm orderForm, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             log.error("【创建订单】参数不正确,orderForm={}",orderForm);
             throw new SellException(ResultEnum.PARAM_ERROR.getCode(),bindingResult.getFieldError().getDefaultMessage());
@@ -58,9 +66,9 @@ public class BuyerOrderController {
 
     //订单列表
     @GetMapping(value = "/list")
-    public ResultVO<List<OrderDTO>> list(@RequestParam("openid") String openid,
-                                         @RequestParam(value = "page",defaultValue = "0") Integer page,
-                                         @RequestParam(value = "size",defaultValue = "10") Integer size){
+    public ResultVO list(@RequestParam("openid") String openid,
+                         @RequestParam(value = "page",defaultValue = "0") Integer page,
+                         @RequestParam(value = "size",defaultValue = "10") Integer size){
 
         if (StringUtils.isEmpty(openid)){
             log.error("【查询订单列表】openid不能为空");
@@ -76,8 +84,8 @@ public class BuyerOrderController {
 
     //订单详情
     @GetMapping(value = "/detail")
-    public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid,
-                                     @RequestParam("orderId") String orderId){
+    public ResultVO detail(@RequestParam("openid") String openid,
+                           @RequestParam("orderId") String orderId){
         //TODO 不安全的做法，需改进
         OrderDTO orderDTO=buyerService.findOrderOne(openid,orderId);
 
@@ -87,8 +95,8 @@ public class BuyerOrderController {
 
     //取消订单
     @PostMapping(value = "/cancel")
-    public ResultVO<OrderDTO> cancel(@RequestParam("openid") String openid,
-                                     @RequestParam("orderId") String orderId){
+    public ResultVO cancel(@RequestParam("openid") String openid,
+                           @RequestParam("orderId") String orderId){
 
         buyerService.cancelOrderOne(openid,orderId);
         return ResultVOUtil.success();
