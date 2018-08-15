@@ -75,7 +75,9 @@ public class BuyerOrderController {
             throw new SellException(ResultEnum.PARAM_ERROR);
         }
 
-        PageRequest request=new PageRequest(page,size);
+//        PageRequest request=new PageRequest (page,size);  作者已弃用此方法
+
+        PageRequest request=PageRequest.of(page,size);
         Page<OrderDTO> orderDTOPage=orderService.findList(openid,request);
 
         return ResultVOUtil.success(orderDTOPage.getContent());

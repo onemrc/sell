@@ -37,7 +37,7 @@ public class SellerOrderController {
     public ModelAndView list(@RequestParam(value = "page",defaultValue = "1") Integer page,
                              @RequestParam(value = "size",defaultValue = "6") Integer size,
                              Map<String,Object>map){
-        PageRequest request=new PageRequest(page-1,size);
+        PageRequest request=PageRequest.of(page-1,size);
         Page<OrderDTO> orderDTOPage=orderService.findList(request);
         map.put("orderDTOPage",orderDTOPage);
         map.put("currentPage",page);

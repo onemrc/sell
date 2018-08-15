@@ -1,13 +1,12 @@
 package com.weixin.sell.controller;
 
 import com.weixin.sell.domain.ProductCategory;
-import com.weixin.sell.exception.SellException;
+import com.weixin.sell.enums.ResultEnum;
 import com.weixin.sell.form.CategoryForm;
 import com.weixin.sell.service.CategoryService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,8 +24,13 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/seller/category")
 public class SellerCategoryController {
-    @Autowired
+
     private CategoryService categoryService;
+
+    @Autowired
+    public SellerCategoryController(CategoryService categoryService){
+        this.categoryService=categoryService;
+    }
 
     @GetMapping(value = "/list")
     public ModelAndView list(Map<String, Object> map){
@@ -57,9 +61,9 @@ public class SellerCategoryController {
                              BindingResult bindingResult,
                              Map<String, Object> map){
         if (bindingResult.hasErrors()) {
-            map.put("msg", bindingResult.getFieldError().getDefaultMessage());
-            map.put("url", "/sell/seller/product/index");
-            return new ModelAndView("common/error", map);
+                map.put("msg", bindingResult.getFieldError().getDefaultMessage());
+                map.put("url", "/sell/seller/product/index");
+                return new ModelAndView("common/error", map);
         }
         ProductCategory productCategory=new ProductCategory();
         try{
@@ -68,8 +72,8 @@ public class SellerCategoryController {
             }
             BeanUtils.copyProperties(form,productCategory);
             categoryService.save(productCategory);
-        }catch (SellException e){
-            map.put("msg",e.getMessage());
+        } catch (Exception e){
+            map.put("msg",ResultEnum.CATEGORY_EXIST_ERROR.getMessage());
             map.put("url","/sell/seller/category/index");
             return new ModelAndView("common/error",map);
         }

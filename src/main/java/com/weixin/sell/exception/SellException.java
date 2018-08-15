@@ -2,6 +2,7 @@ package com.weixin.sell.exception;
 
 import com.weixin.sell.enums.ResultEnum;
 
+
 public class SellException extends RuntimeException {
     private Integer code;
 

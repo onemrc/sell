@@ -62,7 +62,7 @@ public class OrderServiceImplTest {
 
     @Test
     public void findList() throws Exception {
-        PageRequest pageRequest=new PageRequest(0,3);
+        PageRequest pageRequest=PageRequest.of(0,3);
         Page<OrderDTO> orderDTOPage=orderService.findList(BUYER_OPENID,pageRequest);
 
         Assert.assertNotEquals(0,orderDTOPage.getTotalElements());
@@ -91,7 +91,7 @@ public class OrderServiceImplTest {
 
     @Test
     public void list(){
-        PageRequest pageRequest=new PageRequest(0,3);
+        PageRequest pageRequest=PageRequest.of(0,3);
         Page<OrderDTO> orderDTOPage=orderService.findList(pageRequest);
 
 //        Assert.assertNotEquals(0,orderDTOPage.getTotalElements());
