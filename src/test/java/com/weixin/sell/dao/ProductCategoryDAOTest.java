@@ -1,7 +1,6 @@
 package com.weixin.sell.dao;
 
 import com.weixin.sell.domain.ProductCategory;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,28 +20,28 @@ public class ProductCategoryDAOTest {
     private ProductCategoryDAO categoryDAO;
 
     @Test
-    public void findByIdTest(){
-        Optional<ProductCategory> category=categoryDAO.findById(1);
+    public void findByIdTest() {
+        Optional<ProductCategory> category = categoryDAO.findById(1);
         System.out.println(category.toString());
     }
 
     @Test
     @Transactional//测试完后回滚，数据库保持干净
-    public void saveTest(){
+    public void saveTest() {
 //        Optional<ProductCategory> category=categoryDAO.findById(2);
 
-        ProductCategory category=new ProductCategory("男生最爱",3);
+        ProductCategory category = new ProductCategory("男生最爱", 3);
 
         categoryDAO.save(category);
     }
 
     @Test
-    public void findByCategoryTypeInTest(){
-        List<Integer> list= Arrays.asList(1,8,9);
+    public void findByCategoryTypeInTest() {
+        List<Integer> list = Arrays.asList(1, 8, 9);
 
-        List<ProductCategory> result=categoryDAO.findByCategoryTypeIn(list);
+        List<ProductCategory> result = categoryDAO.findByCategoryTypeIn(list);
 
-        System.out.println("reslistSize="+result.size());
+        System.out.println("reslistSize=" + result.size());
     }
 
 }

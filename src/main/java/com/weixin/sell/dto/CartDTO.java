@@ -8,10 +8,10 @@ import lombok.Data;
 @Data
 public class CartDTO {
 
-//    商品id
+    //    商品id
     private String productId;
 
-//    数量
+    //    数量
     private Integer productQuantity;
 
 

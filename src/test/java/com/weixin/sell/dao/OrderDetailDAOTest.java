@@ -18,8 +18,8 @@ public class OrderDetailDAOTest {
     private OrderDetailDAO orderDetailDAO;
 
     @Test
-    public void saveTest(){
-        OrderDetail orderDetail=new OrderDetail();
+    public void saveTest() {
+        OrderDetail orderDetail = new OrderDetail();
         orderDetail.setDetailId("12345");
         orderDetail.setOrderId("11");
         orderDetail.setProductId("123");
@@ -34,8 +34,8 @@ public class OrderDetailDAOTest {
 
     @Test
     public void findByOrderId() throws Exception {
-        List<OrderDetail> orderDetailList= orderDetailDAO.findByOrderId("11");
-        Assert.assertNotEquals(0,orderDetailList.size());
+        List<OrderDetail> orderDetailList = orderDetailDAO.findByOrderId("11");
+        Assert.assertNotEquals(0, orderDetailList.size());
 
     }
 

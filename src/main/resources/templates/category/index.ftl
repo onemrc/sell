@@ -11,10 +11,12 @@
                 <div class="col-md-12 column">
                     <form role="form" method="post" action="/sell/seller/category/save">
                         <div class="form-group">
-                            <label>名称</label><input class="form-control" type="text" name="categoryName" value="${(productCategory.categoryName)!''}"/>
+                            <label>名称</label><input class="form-control" type="text" name="categoryName"
+                                                    value="${(productCategory.categoryName)!''}"/>
                         </div>
                         <div class="form-group">
-                            <label>type</label><input class="form-control" type="text" name="categoryType" value="${(productCategory.categoryType)!''}"/>
+                            <label>type</label><input class="form-control" type="text" name="categoryType"
+                                                      value="${(productCategory.categoryType)!''}"/>
                         </div>
                         <input hidden type="text" name="categoryId" value="${(productCategory.categoryId)!''}">
                         <button class="btn btn-default" type="submit">提交</button>

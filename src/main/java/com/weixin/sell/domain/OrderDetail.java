@@ -13,31 +13,31 @@ import java.util.Date;
 @DynamicUpdate
 public class OrderDetail {
 
-//  id
+    //  id
     @Id
     private String detailId;
 
-//    订单id
+    //    订单id
     private String orderId;
 
-//    商品id
+    //    商品id
     private String productId;
 
-//    商品名称
+    //    商品名称
     private String productName;
 
-//    订单总价格
+    //    订单总价格
     private BigDecimal orderAmount;
 
-//    商品数量
+    //    商品数量
     private Integer productQuantity;
 
-//    商品小图
+    //    商品小图
     private String productIcon;
 
-//    创建时间
+    //    创建时间
     private Date createTime;
 
-//    更新时间
+    //    更新时间
     private Date updateTime;
 }

@@ -49,18 +49,18 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public void decreaseStock(List<CartDTO> cartDTOList) {
-        for (CartDTO cartDTO:cartDTOList){
-            Optional<ProductInfo> temp=productInfoDAO.findById(cartDTO.getProductId());
+        for (CartDTO cartDTO : cartDTOList) {
+            Optional<ProductInfo> temp = productInfoDAO.findById(cartDTO.getProductId());
             ProductInfo productInfo;
-            if (temp.isPresent()){
-                productInfo=productInfoDAO.findById(cartDTO.getProductId()).get();
-            }else {
+            if (temp.isPresent()) {
+                productInfo = productInfoDAO.findById(cartDTO.getProductId()).get();
+            } else {
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
 
-            Integer result=productInfo.getProductStock()-cartDTO.getProductQuantity();
-            if (result<0){
-                throw  new SellException(ResultEnum.PRODUCT_STOCK_ERROR);
+            Integer result = productInfo.getProductStock() - cartDTO.getProductQuantity();
+            if (result < 0) {
+                throw new SellException(ResultEnum.PRODUCT_STOCK_ERROR);
             }
 
             productInfo.setProductStock(result);
@@ -72,14 +72,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductInfo onSale(String productId) {
-        Optional<ProductInfo> temp=productInfoDAO.findById(productId);
+        Optional<ProductInfo> temp = productInfoDAO.findById(productId);
         ProductInfo productInfo;
-        if (temp.isPresent()){
-            productInfo=productInfoDAO.findById(productId).get();
-        }else {
+        if (temp.isPresent()) {
+            productInfo = productInfoDAO.findById(productId).get();
+        } else {
             throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
         }
-        if (productInfo.getProductStatus() == ProductStatusEnum.UP.getCode()){
+        if (productInfo.getProductStatus() == ProductStatusEnum.UP.getCode()) {
             throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
         }
 
@@ -91,14 +91,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductInfo ofSale(String productId) {
-        Optional<ProductInfo> temp=productInfoDAO.findById(productId);
+        Optional<ProductInfo> temp = productInfoDAO.findById(productId);
         ProductInfo productInfo;
-        if (temp.isPresent()){
-            productInfo=productInfoDAO.findById(productId).get();
-        }else {
+        if (temp.isPresent()) {
+            productInfo = productInfoDAO.findById(productId).get();
+        } else {
             throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
         }
-        if (productInfo.getProductStatus() == ProductStatusEnum.DOWN.getCode()){
+        if (productInfo.getProductStatus() == ProductStatusEnum.DOWN.getCode()) {
             throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
         }
 

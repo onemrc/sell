@@ -11,10 +11,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class LoggerTest {
 
-    private final Logger logger= LoggerFactory.getLogger(LoggerTest.class);
+    private final Logger logger = LoggerFactory.getLogger(LoggerTest.class);
 
     @Test
-    public void test1(){
+    public void test1() {
         logger.debug("debug...");
         logger.info("info...");
         logger.error("error...");

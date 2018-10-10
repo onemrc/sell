@@ -32,11 +32,15 @@ import java.util.Map;
 @RequestMapping(value = "/seller/product")
 @Slf4j
 public class SellerProductController {
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+
+    private final CategoryService categoryService;
 
     @Autowired
-    private CategoryService categoryService;
+    public SellerProductController(ProductService productService, CategoryService categoryService) {
+        this.productService = productService;
+        this.categoryService = categoryService;
+    }
 
     /**
      * 订单列表
@@ -131,12 +135,12 @@ public class SellerProductController {
             map.put("url", "/sell/seller/product/index");
             return new ModelAndView("common/error", map);
         }
-        ProductInfo productInfo=new ProductInfo();
+        ProductInfo productInfo = new ProductInfo();
         try {
             //如果productId为空，说明是新增
-            if (!StringUtils.isEmpty(form.getProductId())){
+            if (!StringUtils.isEmpty(form.getProductId())) {
                 productInfo = productService.findOne(form.getProductId());
-            }else {
+            } else {
                 form.setProductId(KeyUtil.genUniqueKey());
             }
             BeanUtils.copyProperties(form, productInfo);

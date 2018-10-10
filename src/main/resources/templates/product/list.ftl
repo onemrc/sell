@@ -2,9 +2,9 @@
 <#include "../common/header.ftl">
 <body>
 <div id="wrapper" class="toggled">
-    <#--侧边栏sidebar-->
-    <#include "../common/nav.ftl">
-    <#--主要内容content-->
+<#--侧边栏sidebar-->
+<#include "../common/nav.ftl">
+<#--主要内容content-->
     <div id="page-content-wrapper">
         <div class="container-fluid">
             <div class="row clearfix">
@@ -42,8 +42,8 @@
                             <td>
                                 <#if productInfo.getProductStatusEnum().getMassage() == "在架">
                                     <a href="/sell/seller/product/off_sale?productId=${productInfo.productId}"> 下架</a>
-                                    <#else >
-                                        <a href="/sell/seller/product/on_sale?productId=${productInfo.productId}"> 上架</a>
+                                <#else >
+                                    <a href="/sell/seller/product/on_sale?productId=${productInfo.productId}"> 上架</a>
                                 </#if>
                             </td>
                         </tr>

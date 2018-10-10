@@ -20,8 +20,8 @@ public class ProductInfoDAOTest {
     private ProductInfoDAO productInfoDAO;
 
     @Test
-    public void saveTest(){
-        ProductInfo productInfo=new ProductInfo();
+    public void saveTest() {
+        ProductInfo productInfo = new ProductInfo();
         productInfo.setProductId("123456");
         productInfo.setProductName("炸鸡");
         productInfo.setProductPrice(new BigDecimal(17.0));
@@ -31,13 +31,13 @@ public class ProductInfoDAOTest {
         productInfo.setProductStatus(0);
         productInfo.setCategoryType(1);
 
-       Assert.assertNotNull( productInfoDAO.save(productInfo));
+        Assert.assertNotNull(productInfoDAO.save(productInfo));
     }
 
     @Test
     public void findByProductStatus() throws Exception {
-        List<ProductInfo> productInfoList=productInfoDAO.findByProductStatus(0);
-        Assert.assertNotEquals(0,productInfoList.size());
+        List<ProductInfo> productInfoList = productInfoDAO.findByProductStatus(0);
+        Assert.assertNotEquals(0, productInfoList.size());
     }
 
 }

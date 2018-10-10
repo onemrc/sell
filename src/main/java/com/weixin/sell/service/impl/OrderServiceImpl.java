@@ -34,16 +34,17 @@ import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+    private final ProductService productService;
+    private final OrderDetailDAO orderDetailDAO;
+    private final OrderMasterDAO orderMasterDAO;
     private Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     @Autowired
-    private ProductService productService;
-
-    @Autowired
-    private OrderDetailDAO orderDetailDAO;
-
-    @Autowired
-    private OrderMasterDAO orderMasterDAO;
+    public OrderServiceImpl(ProductService productService, OrderDetailDAO orderDetailDAO, OrderMasterDAO orderMasterDAO) {
+        this.productService = productService;
+        this.orderDetailDAO = orderDetailDAO;
+        this.orderMasterDAO = orderMasterDAO;
+    }
 
     @Override
     @Transactional //事务回滚

@@ -15,14 +15,13 @@ import java.math.BigDecimal;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OrderMasterDAOTest {
+    private final String OPENID = "100100";
     @Autowired
     private OrderMasterDAO orderMasterDAO;
 
-    private final String OPENID="100100";
-
     @Test
-    public void saveTest(){
-        OrderMaster orderMaster=new OrderMaster();
+    public void saveTest() {
+        OrderMaster orderMaster = new OrderMaster();
         orderMaster.setOrderId("1234567");
         orderMaster.setBuyerName("陈一");
         orderMaster.setBuyerPhone("10000");
@@ -37,13 +36,12 @@ public class OrderMasterDAOTest {
     @Test
     public void findByBuyerOpenid() throws Exception {
         //从第0页开始 ， size=3
-        PageRequest pageRequest=new PageRequest(0,3);
+        PageRequest pageRequest = new PageRequest(0, 3);
 
-        Page<OrderMaster> res=orderMasterDAO.findByBuyerOpenid(OPENID,pageRequest);
-        Assert.assertNotEquals(0,res.getTotalElements());
+        Page<OrderMaster> res = orderMasterDAO.findByBuyerOpenid(OPENID, pageRequest);
+        Assert.assertNotEquals(0, res.getTotalElements());
         System.out.println(res.getTotalElements());//内容总条数
     }
-
 
 
 }
