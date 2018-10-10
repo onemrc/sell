@@ -1,7 +1,7 @@
 # sell
 基于SpringBoot的点餐系统
 
-一个用来入门SpringBoot的项目，后续慢慢完善
+跟着慕课网上面的一个教程做的，用来入门SpringBoot，后续功能慢慢完善
 
 实现功能点：
  - 前后端对接
@@ -14,4 +14,4 @@
 
 
 主要技术点：
-SpringBoot
+- SpringBoot
