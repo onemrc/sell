@@ -26,25 +26,25 @@
 
 #### 商品订单
 
-![1539197399173](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197399173.png)
+![image](https://github.com/onemrc/sell/blob/master/imgs/%E5%95%86%E5%93%81%E5%88%86%E7%B1%BB.png)
 
 
 
 #### 商品列表
 
-![1539197495502](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197495502.png)
+![image](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197495502.png)
 
 
 
 #### 新增商品
 
-![1539197529659](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197529659.png)
+![image](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197529659.png)
 
 
 
 #### 类目列表
 
-![1539197565912](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197565912.png)
+![image](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197565912.png)
 
 
 
