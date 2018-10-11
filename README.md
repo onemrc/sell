@@ -32,19 +32,19 @@
 
 #### 商品列表
 
-![image](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197495502.png)
+![image](https://github.com/onemrc/sell/blob/master/imgs/%E5%95%86%E5%93%81%E5%88%97%E8%A1%A8.png)
 
 
 
 #### 新增商品
 
-![image](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197529659.png)
+![image](https://github.com/onemrc/sell/blob/master/imgs/%E6%96%B0%E5%A2%9E%E5%95%86%E5%93%81.png)
 
 
 
 #### 类目列表
 
-![image](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197565912.png)
+![image](https://github.com/onemrc/sell/blob/master/imgs/%E8%AE%A2%E5%8D%95%E5%88%97%E8%A1%A8.png)
 
 
 
