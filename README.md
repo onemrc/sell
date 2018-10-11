@@ -1,7 +1,50 @@
 # sell
-基于SpringBoot的微信点餐系统
+基于SpringBoot的点餐系统
 
-这是我在慕课网上学习的一门实战教程中写的项目源码
+跟着慕课网上面的一个教程做的，用来入门SpringBoot，后续功能慢慢完善
 
-主要实现了
-买家端类目、买家端商品、买家端订单、微信授权、微信支付和退款、卖家端订单、卖家端通用功能和上下架、卖家端新增商品和类目、买家和卖家端联通
+实现功能点：
+ - 前后端对接
+ - 买家端类目
+ - 买家端商品
+ - 买家端订单
+ - 卖家端订单
+ - 卖家端通用功能和上下架
+ - 卖家端新增商品和类目
+
+
+主要技术点：
+- SpringBoot
+- Hibernate
+
+
+
+
+
+
+## 页面展示：
+
+#### 商品订单
+
+![1539197399173](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197399173.png)
+
+
+
+#### 商品列表
+
+![1539197495502](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197495502.png)
+
+
+
+#### 新增商品
+
+![1539197529659](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197529659.png)
+
+
+
+#### 类目列表
+
+![1539197565912](C:\Users\one\AppData\Roaming\Typora\typora-user-images\1539197565912.png)
+
+
+
