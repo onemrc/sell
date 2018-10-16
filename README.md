@@ -15,7 +15,7 @@
 
 主要技术点：
 - SpringBoot
-- Hibernate
+
 
 
 
